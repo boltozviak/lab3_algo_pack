@@ -9,6 +9,9 @@ from src.utils.test_generator import rand_int_array, nearly_sorted, many_duplica
 
 
 def run_benchmarks():
+    '''
+    Отчёт с бенчмарками
+    '''
     arrays = {
         "rand_int": rand_int_array(10000, 0, 10000, seed=10),
         "nearly_sorted": nearly_sorted(10000, 1000, seed=10),

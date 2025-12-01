@@ -30,36 +30,41 @@ uv run pytest tests/ -v
   - `fibo_recursive(n)` - n-е число Фибоначчи рекурсивно
 
 ## Сортировки
-- [bubble](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/sortings/bubble.py) - пузырьковая сортировка O(n²)
+- [bubble](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/sortings/bubble.py) - Проходит по массиву, сравнивая соседние элементы и меняя их местами, если они стоят в неправильном порядке. Повторяет проходы до полной сортировки.
   - `bubble_sort(arr)` - простая, стабильная, для малых массивов
 
-- [quick](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/sortings/quick.py) -
+- [quick](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/sortings/quick.py)
+-  Выбирает опорный элемент (pivot) и разбивает массив на две части: элементы меньше pivot и элементы больше pivot. Рекурсивно сортирует обе части.
   - `quick_sort(arr)` - с оптимизациями: медиана из трёх для выбора опорного элемента, insertion sort для малых массивов
 
 - [radix](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/sortings/radix.py)
+-   Сортирует числа разряд за разрядом, начиная с младшего. Использует стабильную сортировку подсчётом для каждого разряда.
   - `radix_sort(arr, base)` - поразрядная сортировка, работает с отрицательными числами, настраиваемая база
   - `count_for_radix()` - стабильная сортировка подсчётом для одного разряда
 
 - [bucket](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/sortings/bucket.py)
+-  Распределяет элементы по корзинам на основе их значений. Каждый блок сортируется рекурсивно.
   - `bucket_sort(arr, buckets)` - блочная сортировка для равномерно распределённых данных (int/float)
-  - `recursive_bucket()` - рекурсивное разбиение на блоки
+  - `recursive_bucket()` - рекурсивное разбиение на корзины
 
 - [counting](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/sortings/counting.py)
+- Подсчитывает количество вхождений каждого элемента, создаёт префиксные суммы и размещает элементы в правильном порядке. Работает только с целыми числами в ограниченном диапазоне.
   - `counting_sort(arr)` - стабильная сортировка подсчётом, только для целых чисел
 
 - [heap](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/sortings/heap.py)
+- Строит двоичную кучу (heap) из массива, затем многократно извлекает максимальный элемент из кучи и помещает в конец массива. Сортирует на месте.
   - `heap_sort(arr)` - пирамидальная сортировка на месте, нестабильная
   - `heapify()` - восстановление свойства кучи
 
 ## Структуры данных
-- [Stack](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/structures/stack.py) - стек на односвязном списке
+- [Stack](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/structures/stack.py) - стек(FIFO) на односвязном списке
   - `push(value)` - добавить элемент O(1)
   - `pop()` - извлечь верхний элемент O(1)
   - `peek()` - посмотреть верхний элемент O(1)
   - `min()` - найти минимум O(1) (хранится в каждом узле)
   - `is_empty()` - проверка на пустоту
 
-- [Queue](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/structures/queue.py) - очередь на односвязном списке
+- [Queue](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/structures/queue.py) - очередь(LIFO) на односвязном списке
   - `enqueue(value)` - добавить в конец O(1)
   - `dequeue()` - извлечь из начала O(1)
   - `front()` - посмотреть первый элемент O(1)
