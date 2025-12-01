@@ -19,8 +19,10 @@ def recursive_bucket(arr: list[T], min_el: float, max_el: float, buckets: int | 
         return arr
 
     diff = max_el - min_el
+
+    # Определяем количество корзин: либо переданное значение, либо min(len(arr), 100)
     if buckets is None:
-        num_buckets = len(arr)
+        num_buckets = min(len(arr), 100)
     else:
         num_buckets = buckets
 
@@ -36,6 +38,10 @@ def recursive_bucket(arr: list[T], min_el: float, max_el: float, buckets: int | 
         max_buckets[index] = max(max_buckets[index], num)
 
     for i in range(num_buckets):
-        buckets_arr[i] = recursive_bucket(buckets_arr[i], min_buckets[i], max_buckets[i], num_buckets)
+        if buckets is None:
+            new_buckets = min(len(buckets_arr[i]), 100)
+        else:
+            new_buckets = buckets
+        buckets_arr[i] = recursive_bucket(buckets_arr[i], min_buckets[i], max_buckets[i], new_buckets)
 
     return [num for bucket in buckets_arr for num in bucket]

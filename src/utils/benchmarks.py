@@ -18,9 +18,3 @@ def benchmark_sorts(arrays: dict[str, list], algos: dict[str, Callable]) -> dict
             ans[sort_type][list_type] = timeit_once(func,arr_copy)
 
     return ans
-
-# results = benchmark_sorts(quick_test_arrays, algos)
-# for k, v in results.items():
-#     print(f"{k}: \n")
-#     for k2,v2 in v.items():
-#         print(f"{k2}: {v2}\n")
