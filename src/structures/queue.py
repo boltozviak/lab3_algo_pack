@@ -49,13 +49,3 @@ class Queue(Generic[T]):
 
     def __len__(self):
         return self.size
-
-    def __str__(self):
-        if self.is_empty():
-            return "Queue is empty"
-        nodes = []
-        inter_node = self.head
-        while inter_node:
-            nodes.append(str(inter_node.value))
-            inter_node = inter_node.next
-        return "Queue(head -> tail): " + " ".join(nodes)

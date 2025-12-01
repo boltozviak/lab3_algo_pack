@@ -23,20 +23,16 @@ def test_radix_sort_basic():
 def test_radix_sort_negative():
     assert radix_sort(arr) == sorted_arr
 
-
 def test_radix_sort_invalid_base():
     with pytest.raises(InvalidBaseError):
         radix_sort(arr, base=0)
 
-
 def test_counting_sort_basic():
     assert counting_sort(arr) == sorted_arr
-
 
 def test_counting_sort_invalid_type():
     with pytest.raises(TypeSortingError):
         counting_sort([1.5, 2.3])
-
 
 def test_heap_sort_basic():
     assert heap_sort(arr) == sorted_arr

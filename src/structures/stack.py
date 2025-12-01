@@ -61,12 +61,12 @@ class Stack(Generic[T]):
     def __len__(self):
         return self.size
 
-    def __str__(self):
-        if self.is_empty():
-            return "Stack is empty"
-        nodes = []
-        inter_node = self.head
-        while inter_node:
-            nodes.append(str(inter_node.value))
-            inter_node = inter_node.next
-        return "Stack(head -> bottom): " + " -> ".join(nodes)
+    # def __str__(self):
+    #     if self.is_empty():
+    #         return "Stack is empty"
+    #     nodes = []
+    #     inter_node = self.head
+    #     while inter_node:
+    #         nodes.append(str(inter_node.value))
+    #         inter_node = inter_node.next
+    #     return "Stack(head -> bottom): " + " -> ".join(nodes)
