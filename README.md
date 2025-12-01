@@ -1,6 +1,8 @@
 # Алгосы
 Факториал, Фибоначчи, 6 сортировок, Стэк и Очередь
 
+[Практик](https://github.com/boltozviak/leetcode)♥
+
 ## Поставить
 ```zsh
 #скопировать репозиторий
@@ -20,19 +22,19 @@ python3 -m src.main
 - [Фибоначчи](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/funcs/fibo.py)
 
 ## Сортировки
-- [bubble]()
+- [bubble](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/sortings/bubble.py)
 
-- [quick]()
+- [quick](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/sortings/quick.py)
 
-- [radix]()
+- [radix](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/sortings/radix.py)
 
-- [bucket]()
+- [bucket](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/sortings/bucket.py)
 
-- [counting]()
+- [counting](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/sortings/counting.py)
 
-- [heap]()
+- [heap](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/sortings/heap.py)
 
 ## Структуры данных
-- [Stack]()
+- [Stack](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/structures/stack.py)
 
-- [Queue]()
+- [Queue](https://github.com/boltozviak/lab3_algo_pack/blob/main/src/structures/queue.py)

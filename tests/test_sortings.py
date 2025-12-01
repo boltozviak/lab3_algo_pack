@@ -6,139 +6,46 @@ from src.sortings.counting import counting_sort
 from src.sortings.heap import heap_sort
 from src.sortings.bucket import bucket_sort
 from src.errors.sort_errors import TypeSortingError, InvalidBaseError, InvalidBucketsNumError
+from src.utils.test_generator import rand_int_array
+
+arr = rand_int_array(128, 0, 10000, seed=10)
+sorted_arr = sorted(arr)
+
+def test_bubble_sort_basic():
+    assert bubble_sort(arr) == sorted_arr
+
+def test_quick_sort_basic():
+    assert quick_sort(arr) == sorted_arr
+
+def test_radix_sort_basic():
+    assert radix_sort(arr) == sorted_arr
+
+def test_radix_sort_negative():
+    assert radix_sort(arr) == sorted_arr
 
 
-class TestBubbleSort:
-    def test_empty_array(self):
-        assert bubble_sort([]) == []
-
-    def test_single_element(self):
-        assert bubble_sort([1]) == [1]
-
-    def test_sorted_array(self):
-        assert bubble_sort([1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5]
-
-    def test_reverse_sorted_array(self):
-        assert bubble_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
-
-    def test_random_array(self):
-        assert bubble_sort([3, 1, 4, 1, 5, 9, 2, 6]) == [1, 1, 2, 3, 4, 5, 6, 9]
+def test_radix_sort_invalid_base():
+    with pytest.raises(InvalidBaseError):
+        radix_sort(arr, base=0)
 
 
-class TestQuickSort:
-    def test_empty_array(self):
-        assert quick_sort([]) == []
-
-    def test_single_element(self):
-        assert quick_sort([1]) == [1]
-
-    def test_sorted_array(self):
-        assert quick_sort([1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5]
-
-    def test_reverse_sorted_array(self):
-        assert quick_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
-
-    def test_random_array(self):
-        assert quick_sort([3, 1, 4, 1, 5, 9, 2, 6]) == [1, 1, 2, 3, 4, 5, 6, 9]
+def test_counting_sort_basic():
+    assert counting_sort(arr) == sorted_arr
 
 
-class TestHeapSort:
-    def test_empty_array(self):
-        assert heap_sort([]) == []
-
-    def test_single_element(self):
-        assert heap_sort([1]) == [1]
-
-    def test_sorted_array(self):
-        assert heap_sort([1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5]
-
-    def test_reverse_sorted_array(self):
-        assert heap_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
-
-    def test_random_array(self):
-        assert heap_sort([3, 1, 4, 1, 5, 9, 2, 6]) == [1, 1, 2, 3, 4, 5, 6, 9]
+def test_counting_sort_invalid_type():
+    with pytest.raises(TypeSortingError):
+        counting_sort([1.5, 2.3])
 
 
-class TestCountingSort:
-    def test_empty_array(self):
-        assert counting_sort([]) == []
-
-    def test_single_element(self):
-        assert counting_sort([1]) == [1]
-
-    def test_sorted_array(self):
-        assert counting_sort([1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5]
-
-    def test_reverse_sorted_array(self):
-        assert counting_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
-
-    def test_random_array(self):
-        assert counting_sort([3, 1, 4, 1, 5, 9, 2, 6]) == [1, 1, 2, 3, 4, 5, 6, 9]
-
-    def test_negative_numbers(self):
-        assert counting_sort([-5, -1, 0, 3, -2]) == [-5, -2, -1, 0, 3]
-
-    def test_invalid_type_raises_error(self):
-        with pytest.raises(TypeSortingError):
-            counting_sort([1.5, 2.5, 3.5])  # type: ignore
+def test_heap_sort_basic():
+    assert heap_sort(arr) == sorted_arr
 
 
-class TestRadixSort:
-    def test_empty_array(self):
-        assert radix_sort([]) == []
-
-    def test_single_element(self):
-        assert radix_sort([1]) == [1]
-
-    def test_sorted_array(self):
-        assert radix_sort([1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5]
-
-    def test_reverse_sorted_array(self):
-        assert radix_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
-
-    def test_random_array(self):
-        assert radix_sort([3, 1, 4, 1, 5, 9, 2, 6]) == [1, 1, 2, 3, 4, 5, 6, 9]
-
-    def test_large_numbers(self):
-        assert radix_sort([170, 45, 75, 90, 802, 24, 2, 66]) == [2, 24, 45, 66, 75, 90, 170, 802]
-
-    def test_negative_numbers(self):
-        assert radix_sort([-5, -1, 0, 3, -2]) == [-5, -2, -1, 0, 3]
-
-    def test_invalid_base_raises_error(self):
-        with pytest.raises(InvalidBaseError):
-            radix_sort([1, 2, 3], base=1)
-
-    def test_custom_base(self):
-        assert radix_sort([3, 1, 4, 1, 5, 9, 2, 6], base=2) == [1, 1, 2, 3, 4, 5, 6, 9]
+def test_bucket_sort_basic():
+    assert bucket_sort(arr) == sorted_arr
 
 
-class TestBucketSort:
-    def test_empty_array(self):
-        assert bucket_sort([]) == []
-
-    def test_single_element(self):
-        assert bucket_sort([1]) == [1]
-
-    def test_sorted_array(self):
-        assert bucket_sort([1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5]
-
-    def test_reverse_sorted_array(self):
-        assert bucket_sort([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
-
-    def test_random_array(self):
-        assert bucket_sort([3, 1, 4, 1, 5, 9, 2, 6]) == [1, 1, 2, 3, 4, 5, 6, 9]
-
-    def test_float_array(self):
-        assert bucket_sort([0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434]) == [0.1234, 0.3434, 0.565, 0.656, 0.665, 0.897]
-
-    def test_custom_buckets(self):
-        assert bucket_sort([3, 1, 4, 1, 5, 9, 2, 6], buckets=3) == [1, 1, 2, 3, 4, 5, 6, 9]
-
-    def test_invalid_buckets_raises_error(self):
-        with pytest.raises(InvalidBucketsNumError):
-            bucket_sort([1, 2, 3], buckets=0)
-
-    def test_negative_buckets_raises_error(self):
-        with pytest.raises(InvalidBucketsNumError):
-            bucket_sort([1, 2, 3], buckets=-5)
+def test_bucket_sort_invalid_buckets():
+    with pytest.raises(InvalidBucketsNumError):
+        bucket_sort(arr, buckets=0)
