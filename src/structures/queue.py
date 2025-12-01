@@ -1,31 +1,29 @@
 from src.structures.node import Node
-from src.errors.struct_errors import EmptyQueueError, StructureTypeError
+from src.errors.struct_errors import EmptyQueueError
+from typing import Generic, TypeVar
 
 
-class Queue:
+T = TypeVar("T")
+
+class Queue(Generic[T]):
     def __init__(self):
-        self.type = None # как ещё можно проверять тип
-        self.head = None
+        self.head: Node[T] | None = None
         self.size = 0
-        self.tail = None
+        self.tail: Node[T] | None = None
 
-    def enqueue(self, value):
-        if self.type is None:
-            self.type = type(value)
-        else:
-            if type(value) is not self.type:
-                raise StructureTypeError(f"Expected {self.type.__name__}; got {type(value).__name__}")
-
+    def enqueue(self, value: T):
         new_node = Node(value)
         if self.head is None:
             self.head = new_node
             self.tail = new_node
-        else:
+        elif self.tail is not None:
             self.tail.next = new_node
             self.tail = new_node
         self.size += 1
 
-    def dequeue(self):
+    def dequeue(self) -> T:
+        if self.head is None:
+            raise EmptyQueueError("Queue is empty")# для mypy
         if self.is_empty():
             raise EmptyQueueError("Queue is empty")
 
@@ -38,9 +36,11 @@ class Queue:
         self.size -= 1
         return popped_node.value
 
-    def front(self):
+    def front(self) -> T:
         if self.is_empty():
             raise EmptyQueueError("Queue is empty")
+        if self.head is None:
+            raise EmptyQueueError("Stack is empty")
         else:
             return self.head.value
 

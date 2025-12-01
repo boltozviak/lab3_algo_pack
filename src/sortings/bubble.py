@@ -1,9 +1,12 @@
-from src.errors.sort_errors import TypeSortingError
+from typing import TypeVar
 
 
-def bubble_sort(arr: list[int]) -> list[int]:
-    if not isinstance(arr, list) or not all(isinstance(x, int) for x in arr):
-        raise TypeSortingError("Invalid type for sorting") # как лучше валидировать данные в структурах?
+T = TypeVar("T", int, float, str)
+
+
+def bubble_sort(arr: list[T]) -> list[T]:
+    if len(arr) <= 1:
+        return arr
     length = len(arr)
     for i in range(length):
         for j in range(length - i - 1):

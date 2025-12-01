@@ -1,7 +1,7 @@
 from src.errors.func_errors import InvalidValueError
 
 
-def fibo(n: int) -> int:
+def fibo_iter(n: int) -> int:
     if not isinstance(n, int) or (n < 0):
         raise InvalidValueError("Invalid value")
     if n == 0:
@@ -12,10 +12,8 @@ def fibo(n: int) -> int:
     first = 0
     second = 1
     for i in range(2, n + 1):
-        nxt = first + second
-        first = second
-        second = nxt
-    return nxt
+        first, second = second, first + second
+    return second
 
 def fibo_recursive(n: int) -> int:
     if not isinstance(n, int) or (n < 0):

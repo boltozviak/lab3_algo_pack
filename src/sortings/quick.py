@@ -1,6 +1,10 @@
-LENGTH_FOR_INSERTION_SORT = 20
+from typing import TypeVar
 
-def median_of_three(arr, begin, mid, end):
+
+LENGTH_FOR_INSERTION_SORT = 20
+T = TypeVar("T", int, float, str)
+
+def median_of_three(arr: list[T], begin: int, mid: int, end: int) -> int:
     a = arr[begin]
     b = arr[mid]
     c = arr[end]
@@ -11,7 +15,7 @@ def median_of_three(arr, begin, mid, end):
     else:
         return end
 
-def insertion_sort(arr: list[int], left: int, right: int):
+def insertion_sort(arr: list[T], left: int, right: int):
     '''
     Для оптимизации quick_sort на маленьких массивах
     '''
@@ -24,7 +28,7 @@ def insertion_sort(arr: list[int], left: int, right: int):
         arr[j + 1] = key
 
 
-def separate_array(arr, left, right):
+def separate_array(arr: list[T], left: int, right: int) -> int:
     pivot_index = median_of_three(arr, left, (left + right) // 2, right)
     pivot = arr[pivot_index]
     arr[pivot_index], arr[(left + right) // 2] = arr[(left + right) // 2], arr[pivot_index]
@@ -36,13 +40,14 @@ def separate_array(arr, left, right):
         while arr[j] > pivot:
             j -= 1
         if i >= j:
-            return j
+            break
         arr[i], arr[j] = arr[j], arr[i]
         i += 1
         j -= 1
+    return j
 
 
-def quick_sort_body(arr, left, right):
+def quick_sort_body(arr: list[T], left: int, right: int):
     if left >= right:
         return
 
@@ -55,7 +60,7 @@ def quick_sort_body(arr, left, right):
     quick_sort_body(arr, q + 1, right)
 
 
-def quick_sort(arr):
+def quick_sort(arr: list[T]) -> list[T]:
     if len(arr) <= 1:
         return arr
     quick_sort_body(arr, 0, len(arr) - 1)

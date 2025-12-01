@@ -4,3 +4,7 @@ class FuncError(Exception):
 class InvalidValueError(FuncError):
     def __init__(self, *args):
         super().__init__(*args)
+
+class NotEnoughUniqueValues(FuncError):
+    def __init__(self, *args):
+        super().__init__(*args)

@@ -5,6 +5,12 @@ description = "Add your description here"
 requires-python = ">=3.12"
 dependencies = [
     "argman>=0.3.0",
+    "loguru>=0.7.3",
+    "numpy>=2.3.5",
     "pre-commit>=4.5.0",
     "pytest>=8.4.2",
 ]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true

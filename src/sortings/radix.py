@@ -1,6 +1,7 @@
 # from src.errors.sort_errors import TypeSortingError
+from src.errors.sort_errors import InvalidBaseError
 
-def count_for_radix(arr, pos, base = 10):
+def count_for_radix(arr: list[int], pos: int, base: int = 10) -> list[int]:
     pref = [0] * base  # Размер должен соответствовать base
 
     for num in arr:
@@ -18,12 +19,16 @@ def count_for_radix(arr, pos, base = 10):
 
     return res
 
-def radix_sort(arr, base = 10):
+def radix_sort(arr: list[int], base: int = 10) -> list[int]:
+    if base <= 1:
+        raise InvalidBaseError(f"Invalid base {base}")
+    if len(arr) <= 1:
+        return arr
     max_num = max(abs(x) for x in arr)
     pos = 1
 
     positive = [x for x in arr if x >= 0]
-    negative = [-x for x in arr if x < 0]
+    negative = [x * -1 for x in arr if x < 0]
 
     while max_num // pos != 0:
         positive = count_for_radix(positive, pos, base)

@@ -1,7 +1,7 @@
 from src.errors.func_errors import InvalidValueError
 
 
-def fact(n: int) -> int:
+def fact_iter(n: int) -> int:
     if not isinstance(n, int) or (n < 0):
         raise InvalidValueError("Invalid value")
     ans = 1

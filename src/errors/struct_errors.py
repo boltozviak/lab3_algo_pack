@@ -8,7 +8,3 @@ class EmptyStackError(StructureException):
 class EmptyQueueError(StructureException):
     def __init__(self, *args) -> None:
         super().__init__(*args)
-
-class StructureTypeError(StructureException):
-    def __init__(self, *args) -> None:
-        super().__init__(*args)

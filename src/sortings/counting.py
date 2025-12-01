@@ -1,7 +1,7 @@
 from src.errors.sort_errors import TypeSortingError
 
 
-def counting_sort(arr):
+def counting_sort(arr: list[int]) -> list[int]:
     if not isinstance(arr, list) or not all(isinstance(x, int) for x in arr):
         raise TypeSortingError("Invalid type for sorting") # как лучше валидировать данные в структурах?
 
