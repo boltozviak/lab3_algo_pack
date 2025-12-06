@@ -19,8 +19,6 @@ class Stack(Generic[T]):
 
     def pop(self) -> T:
         if self.head is None:
-            raise EmptyStackError("Stack is empty") # для mypy -> выдавал Item "None" of "Node[T] | None" has no attribute "next"
-        if self.is_empty():
             raise EmptyStackError("Stack is empty")
         else:
             popped_node = self.head
@@ -44,15 +42,11 @@ class Stack(Generic[T]):
         self.size += 1
 
     def min(self) -> T | None:
-        if self.is_empty():
-            raise EmptyStackError("Stack is empty")
         if self.head is None:
             raise EmptyStackError("Stack is empty")
         return self.head.min
 
     def peek(self) -> T:
-        if self.is_empty():
-            raise EmptyStackError("Stack is empty")
         if self.head is None:
             raise EmptyStackError("Stack is empty")
         else:

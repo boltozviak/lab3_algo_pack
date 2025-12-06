@@ -3,7 +3,7 @@ from src.errors.sort_errors import TypeSortingError
 
 def counting_sort(arr: list[int]) -> list[int]:
     if not isinstance(arr, list) or not all(isinstance(x, int) for x in arr):
-        raise TypeSortingError("Invalid type for sorting") # как лучше валидировать данные в структурах?
+        raise TypeSortingError("Invalid type for sorting")
 
     if len(arr) <= 1:
         return arr

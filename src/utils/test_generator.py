@@ -46,5 +46,4 @@ def rand_float_array(n: int, lo=0.0, hi=1.0, *, seed=None) -> list[float]:
         random.seed(seed)
 
     arr = random.uniform(lo, hi, size=n)
-
     return arr.tolist()

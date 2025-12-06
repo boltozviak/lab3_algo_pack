@@ -38,29 +38,3 @@ def radix_sort(arr: list[int], base: int = 10) -> list[int]:
     negative.reverse()
     res = [x * -1 for x in negative] + positive
     return res
-
-
-# def radix_sort_with_buckets(arr):
-#     '''
-#     Без внешней стабильной сортировки + не работает с отрицательными
-#     '''
-#     if not isinstance(arr, list) or not all(isinstance(x, int) for x in arr):
-#         raise TypeSortingError("Invalid type for sorting") # как лучше валидировать данные в структурах?
-
-#     max_num = max(arr)
-#     pos = 1
-#     positive = [x for x in arr if x >= 0]
-#     negative = [x for x in arr if x < 0]
-
-#     while max_num // pos > 0:
-#         buckets_pos = [[] for _ in range(10)]
-#         buckets_neg = [[] for _ in range(10)]
-
-#         for num in arr:
-#             index = (num // pos) % 10
-#             buckets[index].append(num)
-
-#         arr = [num for bucket in buckets for num in bucket]
-#         pos *= 10
-
-#     return arr

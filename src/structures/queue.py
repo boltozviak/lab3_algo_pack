@@ -23,8 +23,6 @@ class Queue(Generic[T]):
 
     def dequeue(self) -> T:
         if self.head is None:
-            raise EmptyQueueError("Queue is empty")# для mypy
-        if self.is_empty():
             raise EmptyQueueError("Queue is empty")
 
         popped_node = self.head
@@ -37,8 +35,6 @@ class Queue(Generic[T]):
         return popped_node.value
 
     def front(self) -> T:
-        if self.is_empty():
-            raise EmptyQueueError("Queue is empty")
         if self.head is None:
             raise EmptyQueueError("Stack is empty")
         else:
